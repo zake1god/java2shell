@@ -1,0 +1,32 @@
+name: java2shell-lab
+
+x-lab-common: &lab-common
+  build:
+    context: .
+  image: java2shell-lab:local
+  read_only: true
+  tmpfs:
+    - /tmp:size=16m,mode=1777
+  cap_drop:
+    - ALL
+  security_opt:
+    - no-new-privileges:true
+  pids_limit: 128
+  mem_limit: 384m
+  restart: "no"
+
+services:
+  vulnerable:
+    <<: *lab-common
+    environment:
+      LAB_LABEL: vulnerable-default-intrinsic
+    ports:
+      - "127.0.0.1:8080:8080"
+
+  mitigated:
+    <<: *lab-common
+    environment:
+      LAB_LABEL: mitigated-intrinsic-disabled
+      JAVA_TOOL_OPTIONS: -XX:-UseBASE64Intrinsics
+    ports:
+      - "127.0.0.1:8081:8080"

@@ -1,0 +1,8 @@
+.git
+.github
+build
+docs
+tests
+tools
+scripts
+*.md

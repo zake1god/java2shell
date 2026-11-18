@@ -1,8 +1,15 @@
 # RCE and shell status
 
 The discoverer reports successful, application-specific RCE chains and has
-published a demonstration video. The same disclosure explicitly says those
-weaponized product exploits are being withheld for now.
+published a demonstration video, including pre-auth exploitation of Keycloak.
+That is evidence that RCE is real, not merely theoretical. The same disclosure
+explicitly says the product exploit implementations are being withheld for now.
+
+A public-source crawl and manual audit performed on 2026-11-18 found no
+independently reproducible product shell chain. Public candidates currently
+stop at OOB/crash/experimental heap work, infer success from weak network
+signals, or deliberately add an application command gate. The commit-pinned
+review is in [PUBLIC-EXPLOIT-TRACKER.md](PUBLIC-EXPLOIT-TRACKER.md).
 
 This repository therefore does **not** present heap corruption as if it were a
 shell. It contains no reverse shell, web shell, product-specific exploit, or
@@ -27,4 +34,5 @@ A future shell claim should only be added when all of the following are true:
 5. the exploit is not made portable to unrelated public targets.
 
 Until then, the honest result is memory corruption with reported RCE impact,
-not a public universal shell exploit.
+plus demonstrated private application-specific RCE, not a public reproducible
+shell exploit.

@@ -20,10 +20,13 @@ write in HotSpot's x86-64 AVX-512 Base64 decoder intrinsic.
 - a negative control using `-XX:-UseBASE64Intrinsics`;
 - patch and fleet-checking guidance with source references.
 
-It does **not** contain a reverse shell or pretend that memory corruption alone
-is command execution. Calif reports application-specific RCE and has published
-a video, but its weaponized product exploits are currently withheld. See
-[RCE and shell status](docs/RCE-STATUS.md).
+Application-specific RCE is real: Calif published a Keycloak demonstration and
+reports successful chains against several products. This repository does
+**not** turn that evidence into a false claim that the public 62-byte trigger is
+already a shell. The product exploit implementations remain withheld, while
+several public repositories currently contain only simulators, crash detectors,
+or synthetic command gates. See [RCE and shell status](docs/RCE-STATUS.md) and
+the commit-pinned [public exploit tracker](docs/PUBLIC-EXPLOIT-TRACKER.md).
 
 ## Exposure gate
 
@@ -142,16 +145,19 @@ the running process rather than trusting an image tag or SBOM alone.
 | `tools/RuntimeProbe.java` | local runtime/CPU/probe checker |
 | `compose.yaml` | vulnerable and mitigated containers |
 | `scripts/demo.sh` | side-by-side HTTP demonstration |
+| `tools/crawl_public_repos.py` | read-only GitHub research crawler |
 | `docs/TECHNICAL.md` | root cause, exposure gates, and evidence levels |
 | `docs/RCE-STATUS.md` | precise boundary between OOB, DoS, and shell claims |
+| `docs/PUBLIC-EXPLOIT-TRACKER.md` | public RCE evidence and audited GitHub claims |
 | `docs/REFERENCES.md` | primary and high-confidence sources |
 
 ## Bahasa Indonesia singkat
 
 Repo ini membantu mengecek CVE-2026-114938 secara lokal dan aman. Jalankan dua
 container: satu memakai JDK rentan, satu lagi memakai mitigation flag. Hasil
-yang dibuktikan adalah OOB write 62 byte dengan kontrol negatif bersih. Klaim
-shell/RCE tidak dipalsukan karena exploit aplikasi-spesifik dari penemu belum
-dipublikasikan.
+yang dibuktikan adalah OOB write 62 byte dengan kontrol negatif bersih. RCE
+aplikasi-spesifik memang sudah didemonstrasikan, termasuk pada Keycloak, tetapi
+source chain tersebut belum dipublikasikan. Tracker publik di repo membedakan
+demo RCE, reproducer crash/OOB, simulator, dan command gate sintetis.
 
 Use only on systems you own or are explicitly authorized to test.

@@ -1,4 +1,4 @@
-.PHONY: compile test build up demo down check
+.PHONY: compile test build up demo down check research
 
 compile:
 	mkdir -p build
@@ -21,3 +21,6 @@ down:
 
 check:
 	bash scripts/check.sh
+
+research:
+	python3 tools/crawl_public_repos.py --limit 100

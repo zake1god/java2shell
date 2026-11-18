@@ -41,7 +41,11 @@ control and should report zero.
 | Runtime | Bounded write beyond the expected Base64 output size |
 | HTTP reachability | An unauthenticated HTTP request reaches the decoder |
 | DoS | Not forced by the default demo |
-| RCE / shell | Not claimed or included |
+| RCE / shell | Demonstrated by Calif; not reproduced by this repository |
+
+See [PUBLIC-EXPLOIT-TRACKER.md](PUBLIC-EXPLOIT-TRACKER.md) for the distinction
+between the official RCE demonstration, public OOB/crash reproducers, simulator
+code, and purpose-built command gates.
 
 ## Patch and mitigation
 

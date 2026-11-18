@@ -1,4 +1,4 @@
-# Java2Shell / Java4Shell lab
+# Java4Shell (Java2Shell) — CVE-2026-114938 lab
 
 [![CI](https://github.com/zake1god/java2shell/actions/workflows/ci.yml/badge.svg)](https://github.com/zake1god/java2shell/actions/workflows/ci.yml)
 

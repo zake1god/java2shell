@@ -5,6 +5,12 @@ repo_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 build_dir="$(mktemp -d)"
 trap 'rm -rf -- "$build_dir"' EXIT
 
+bash -n \
+  "$repo_dir/scripts/check.sh" \
+  "$repo_dir/scripts/demo.sh" \
+  "$repo_dir/scripts/preflight.sh" \
+  "$repo_dir/scripts/verify.sh"
+
 javac --release 17 -d "$build_dir" "$repo_dir/app/LabServer.java"
 javac --release 17 -d "$build_dir" "$repo_dir/tools/RuntimeProbe.java"
 

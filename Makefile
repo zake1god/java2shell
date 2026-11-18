@@ -1,4 +1,4 @@
-.PHONY: compile test build up demo down check research
+.PHONY: compile test preflight build up demo verify down check research
 
 compile:
 	mkdir -p build
@@ -6,6 +6,9 @@ compile:
 
 test:
 	bash tests/smoke.sh
+
+preflight:
+	bash scripts/preflight.sh
 
 build:
 	docker compose build --pull
@@ -15,6 +18,9 @@ up:
 
 demo:
 	bash scripts/demo.sh
+
+verify:
+	bash scripts/verify.sh
 
 down:
 	docker compose down --remove-orphans
